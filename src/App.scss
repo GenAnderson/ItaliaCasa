@@ -1,0 +1,63 @@
+@import "./house/house.module.scss";
+@import "./map/map.module.scss";
+
+@font-face {
+  font-family: SophiaBella;
+  src: url(./SophiaBella.ttf);
+}
+
+.App {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+/////////////////SIDEBAR/////////////////
+
+.sideBar {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  width: 30%;
+  overflow: scroll;
+  overflow-x: hidden;
+  list-style: none;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(0, 15, 0),
+    rgb(1, 36, 1)
+  );
+  padding: 3rem;
+  h1 {
+    font-family: SophiaBella;
+    font-weight: 400;
+    transform: scale(1.1);
+    color: #eee;
+    font-size: 4rem;
+    text-align: center;
+    background-color: rgb(4, 48, 32);
+    padding: 1rem;
+  }
+}
+
+.homesContainer {
+  form {
+    margin-bottom: 2rem;
+  }
+  select {
+    font-family: inherit;
+    font-size: 1.8rem;
+    background-color: rgb(1, 36, 1);
+    color: white;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .dropdown {
+    option {
+      padding-top: 5rem;
+    }
+  }
+}
