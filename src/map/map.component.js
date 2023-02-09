@@ -1,10 +1,9 @@
-import housesData from "../context/housesData";
 import { useContext, useEffect, useState } from "react";
 import { allHomesContext } from "../context/housesData.context";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import L, { marker } from "leaflet";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -14,40 +13,32 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-// const greenIcon = new L.Icon({
-//   iconUrl:
-//     "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
-//   shadowUrl:
-//     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-//   iconSize: [25, 41],
-//   iconAnchor: [12, 41],
-//   popupAnchor: [1, -34],
-//   shadowSize: [41, 41],
-// });
-
 function MapComponent() {
-  const { allHomes, setAllHomes } = useContext(allHomesContext);
-  // const { findHome, setFindHome } = useContext(allHomesContext);
-  const [lat, setLat] = useState("");
+  const { allHomes } = useContext(allHomesContext);
+  const { findHome } = useContext(allHomesContext);
+  const { findMarker, setFindMarker } = useContext(allHomesContext);
 
-  // const handleMarkerClick = {
-  //   click: (e) => setLat(e.target._latlng.lat),
-  // };
-
+  let markerId;
   const handleMarkerClick = {
-    click: (e) => setLat(e.target._latlng.lat),
+    click: (e) => changeMarker(e),
   };
 
-  // findEntry();
+  function changeMarker(e) {
+    !e.target._icon.classList.contains("selectMarker")
+      ? e.target._icon.classList.add("selectMarker")
+      : e.target._icon.classList.remove("selectMarker");
 
-  // function findEntry() {
-  //   const home = housesData.filter((entry) => {
-  //     if (entry.coords.includes(lat)) {
-  //       setFindHome(entry);
-  //     }
-  //   });
-  //   console.log("findHome:", findHome);
-  // }
+    const markerId = e.sourceTarget.options.id;
+    setFindMarker(markerId);
+  }
+
+  useEffect(() => {
+    allHomes.find((home) => {
+      if (findHome === home.id) {
+        // console.log(L.Marker._icon.classList.add("selectMarker"));
+      }
+    });
+  }, [findHome, findMarker]);
 
   return (
     <div id="map">
@@ -61,13 +52,14 @@ function MapComponent() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {housesData.map((house) => {
+        {allHomes.map((house) => {
           return (
             <Marker
               position={house.coords}
               key={house.id}
+              id={house.id}
               eventHandlers={handleMarkerClick}
-              // onClick={{ handleMarkerClick }}
+              // icon={testing}
             >
               <Popup>{`🏆${house.id}  💲${house.price.toLocaleString(
                 "en-US"

@@ -1,18 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { allHomesContext } from "./context/housesData.context.js";
 
 import MapComponent from "./map/map.component.js";
 import HouseComponent from "./house/house.component.js";
 
-import { allHomesContext } from "./context/housesData.context.js";
-
 import "./App.scss";
 
 function App() {
-  // const [parent, enableAnimations] = vAutoAnimate();
-
+  ///// ANIMATE SIDEBAR /////
   const [listRef] = useAutoAnimate();
 
+  ///// FILTER/SORT SIDEBAR /////
   const { allHomes, setAllHomes } = useContext(allHomesContext);
   const [sortType, setSortType] = useState("id");
 
@@ -34,17 +33,19 @@ function App() {
     sortArray(sortType);
   }, [sortType]);
 
+  ///// handleHomeClick /////
+
   return (
     <div className="App">
       <div className="sideBar">
         <h1>Casa dolce casa</h1>
         <div className="homesContainer" ref={listRef}>
           <form>
+            <span>Filter:</span>
             <select
               class="dropdown"
               onChange={(e) => setSortType(e.target.value)}
             >
-              <option>Filter</option>
               <option value="rank">Rank</option>
               <option value="price">Price</option>
               <option value="hospital">Hospital</option>
