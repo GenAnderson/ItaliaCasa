@@ -31,7 +31,7 @@ function App() {
       setAllHomes(sorted);
     };
     sortArray(sortType);
-  }, [sortType]);
+  }, [sortType, allHomes, setAllHomes]);
 
   ///// handleHomeClick /////
 

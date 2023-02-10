@@ -4,6 +4,7 @@ import { useContext } from "react";
 import "./house.module.scss";
 function HouseComponent({ house }) {
   const { setFindHome } = useContext(allHomesContext);
+  const { allHomes } = useContext(allHomesContext);
 
   const {
     id,
@@ -19,6 +20,7 @@ function HouseComponent({ house }) {
     market,
     notes,
     link,
+    active,
   } = house;
 
   function yesOrNo(status) {
@@ -32,21 +34,31 @@ function HouseComponent({ house }) {
   }
 
   function homeClickHandler(event) {
-    // highlight home item
     const houseClass = event.currentTarget;
-    !houseClass.classList.contains("shadow")
-      ? houseClass.classList.add("shadow")
-      : houseClass.classList.remove("shadow");
-
-    // save houseId in context
     const houseId = +houseClass.id;
+
+    allHomes.forEach((home) => {
+      if (houseId === home.id) {
+        home.active = true;
+      } else if (houseId === home.id && home.active === true) {
+        home.active = false;
+      } else if (houseId !== home.id) {
+        home.active = false;
+      }
+    });
+
     setFindHome(houseId);
   }
 
   return (
-    <div class="house__item" key={id} id={id} onClick={homeClickHandler}>
+    <div
+      class={`${active === true ? "shadow" : "house__item"}`}
+      key={id}
+      id={id}
+      onClick={homeClickHandler}
+    >
       <li>
-        <img class="house__image" src={img} />
+        <img class="house__image" src={img} alt={notes} />
         <div class="house__Container">
           <div>
             <span class="house__icon">🏆</span>
@@ -82,7 +94,7 @@ function HouseComponent({ house }) {
           <em>Notes: {notes}</em>
         </span>
         <div class="house__posting">
-          <a href={link} target="_blank">
+          <a href={link} target="_blank" rel="noreferrer">
             Site→
           </a>
         </div>

@@ -14,6 +14,7 @@ const housesData = [
     market: 0.3,
     notes: "Sauna/hot tub",
     link: "https://www.idealista.it/en/immobile/26328111/",
+    active: false,
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const housesData = [
     market: 6.6,
     notes: "Modern sleek inside",
     link: "https://www.idealista.it/en/immobile/23028940/",
+    active: false,
   },
   {
     id: 3,
@@ -46,6 +48,7 @@ const housesData = [
     market: 2.2,
     notes: "Small single sauna. Private gated. Huge yard.",
     link: "https://www.idealista.it/en/immobile/23333663/",
+    active: false,
   },
   {
     id: 4,
@@ -62,6 +65,7 @@ const housesData = [
     market: 0.6,
     notes: "Rectangle. Each bedroom has own bathroom. Best view.",
     link: "https://www.idealista.it/en/immobile/24988985/",
+    active: false,
   },
   {
     id: 5,
@@ -78,6 +82,7 @@ const housesData = [
     market: 5.4,
     notes: "Beautiful outdoors. Resident evil inside",
     link: "https://www.idealista.it/en/immobile/25954087/",
+    active: false,
   },
   {
     id: 6,
@@ -94,6 +99,7 @@ const housesData = [
     market: 0.5,
     notes: "Irrigation system, water reserve, nice beamed ceilings",
     link: "https://www.idealista.it/en/immobile/26028737/",
+    active: false,
   },
   {
     id: 7,
@@ -110,6 +116,7 @@ const housesData = [
     market: 0.1,
     notes: "Secluded, nice view, heated swimming pool :)",
     link: "https://www.jamesedition.com/real_estate/costa-smeralda-italy/villa-sunrise-12128297",
+    active: false,
   },
   {
     id: 8,
@@ -126,6 +133,7 @@ const housesData = [
     market: 1.1,
     notes: "Deserty feel with some grassy area. Secluded.",
     link: "https://www.jamesedition.com/real_estate/porto-rotondo-italy/villa-pedra-11230324",
+    active: false,
   },
   {
     id: 9,
@@ -142,6 +150,7 @@ const housesData = [
     market: 0.1,
     notes: "Minimalist home",
     link: "https://www.jamesedition.com/real_estate/porto-cervo-italy/villa-minimal-porto-cervo-11810016",
+    active: false,
   },
   {
     id: 10,
@@ -159,6 +168,7 @@ const housesData = [
     notes:
       "Big yard. Irrigation. Secluded. Interior awesome, exterior facade not so much",
     link: "https://www.idealista.it/en/immobile/18922898/",
+    active: false,
   },
   {
     id: 11,
@@ -175,6 +185,7 @@ const housesData = [
     market: 5.3,
     notes: "Tavern is a little creepy",
     link: "https://www.jamesedition.com/real_estate/olbia-italy/single-house-for-sale-in-olbia-10981424",
+    active: false,
   },
   {
     id: 12,
@@ -192,6 +203,7 @@ const housesData = [
     notes:
       "Part of 10 completely independent detached villas. No heating. Where's the garden?",
     link: "https://www.idealista.it/en/immobile/19301693/",
+    active: false,
   },
 ];
 
